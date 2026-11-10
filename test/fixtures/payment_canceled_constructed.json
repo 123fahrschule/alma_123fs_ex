@@ -1,0 +1,39 @@
+{
+  "id": "payment_11uPRjP4a3cFQvoM1lehDnpxa2tYm2Hy0I",
+  "merchant_id": "merchant_11gLsWNxRc3ZLvM1G4RbQzTsLKmeE0yYCq",
+  "merchant_name": "123fahrschule",
+  "state": "not_started",
+  "processing_status": "canceled",
+  "cancelation_reason": "requested_by_merchant",
+  "created": 1762768800,
+  "updated": 1762772400,
+  "expired_at": 1762772400,
+  "url": "https://checkout.sandbox.almapay.com/payment_11uPRjP4a3cFQvoM1lehDnpxa2tYm2Hy0I",
+  "return_url": "https://example.test/alma/return",
+  "customer_cancel_url": "https://example.test/alma/cancel",
+  "failure_return_url": "https://example.test/alma/failure",
+  "purchase_amount": 45000,
+  "installments_count": 3,
+  "kind": "P3X",
+  "capture_method": "automatic",
+  "payment_plan": [
+    {"state": "pending", "is_check": false, "original_purchase_amount": 15000, "purchase_amount": 15000, "customer_fee": 0, "customer_interest": 0, "due_date": 1762768800, "date_paid": null},
+    {"state": "pending", "is_check": false, "original_purchase_amount": 15000, "purchase_amount": 15000, "customer_fee": 0, "customer_interest": 0, "due_date": 1765360800, "date_paid": null},
+    {"state": "pending", "is_check": false, "original_purchase_amount": 15000, "purchase_amount": 15000, "customer_fee": 0, "customer_interest": 0, "due_date": 1768039200, "date_paid": null}
+  ],
+  "custom_data": {"payment_id": "8b3f2c1e-0000-4000-8000-000000000001"},
+  "orders": [
+    {"id": "order_11h4MCc4atnjecmoK6GU6UYGo6qMK6RMLw", "created": 1762768800, "merchant_reference": "RS-PAYMENT-1", "merchant_url": null, "customer_url": null, "data": {}, "comment": null}
+  ],
+  "origin": "online_in_page",
+  "locale": "de",
+  "ipn_callback_url": "https://example.test/alma/ipn",
+  "refunds": [],
+  "is_completely_refunded": false,
+  "amount_already_refunded": 0,
+  "fees": {"merchant": {"total": 1350, "total_excluding_tax": 1125, "tax": 225}},
+  "customer_fee": 0,
+  "customer_interest": 0,
+  "annual_interest_rate": 0,
+  "merchant_target_fee": 1350
+}

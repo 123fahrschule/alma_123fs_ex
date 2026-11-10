@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-11-10",
+  "php_client_revision": "28f6f8f0cb285223555568c57b293035214012f2",
+  "base_urls": {
+    "live": "https://api.getalma.eu",
+    "sandbox": "https://api.sandbox.getalma.eu",
+    "source": "reference/v10.md (base URLs end in /v1/), PHP Domain/ValueObject/Environment.php (host only, paths carry /v1 or /v2)"
+  },
+  "authorization": {"header": "authorization", "scheme": "Alma-Auth", "source": "reference/authentification.md, PHP AbstractEndpoint::createRequest"},
+  "operations": {
+    "eligibility": {"method": "POST", "path": "/v2/payments/eligibility", "source": "reference/verifier-eligibilite-achat.md (servers https://api.getalma.eu/v2/), PHP EligibilityEndpoint::ELIGIBILITY_ENDPOINT"},
+    "payments.create": {"method": "POST", "path": "/v1/payments", "body_root": ["payment", "customer", "order"], "source": "reference/creer-un-payment.md, PHP PaymentEndpoint::create"},
+    "payments.fetch": {"method": "GET", "path": "/v1/payments/{id}", "source": "reference/recuperer-un-payment.md, PHP PaymentEndpoint::fetch"},
+    "payments.cancel": {"method": "POST", "path": "/v1/payments/{id}/cancel", "source": "reference/cancel-a-payment.md (POST); PHP PaymentEndpoint::cancel uses PUT"},
+    "payments.list": {"method": "GET", "path": "/v1/payments", "query": ["created_after", "created_before", "customer_email", "state", "limit", "starting_after"], "source": "reference/recuperer-une-liste-de-payments.md, reference/format-des-donnees.md"},
+    "webhooks.create": {"method": "POST", "path": "/v1/webhooks", "body": ["type", "url"], "source": "PHP WebhookEndpoint::create (not in the public reference)"},
+    "webhooks.fetch": {"method": "GET", "path": "/v1/webhooks/{id}", "source": "PHP WebhookEndpoint::fetch (not in the public reference)"},
+    "webhooks.delete": {"method": "DELETE", "path": "/v1/webhooks/{id}", "source": "PHP WebhookEndpoint::delete (not in the public reference)"}
+  }
+}

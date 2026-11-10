@@ -1,0 +1,12 @@
+{
+  "detail": [
+    {
+      "input": "__not__paid",
+      "loc": ["state", 0],
+      "msg": "Input should be 'not_ready', 'not_started', 'scored_no', 'scored_maybe', 'scored_yes', 'in_progress', 'paid', 'late' or 'default'",
+      "type": "enum"
+    }
+  ],
+  "error_code": "validation_error",
+  "message": "Input should be 'not_ready', 'not_started', 'scored_no', 'scored_maybe', 'scored_yes', 'in_progress', 'paid', 'late' or 'default'"
+}

@@ -1,0 +1,154 @@
+[
+  {
+    "customer_total_cost_amount": 0,
+    "customer_total_cost_bps": 0,
+    "deferred_days": 0,
+    "deferred_months": 0,
+    "eligible": true,
+    "installments_count": 3,
+    "payment_plan": [
+      {
+        "customer_fee": 0,
+        "customer_interest": 0,
+        "due_date": 1628067070,
+        "purchase_amount": 27234,
+        "total_amount": 27234
+      },
+      {
+        "customer_fee": 0,
+        "customer_interest": 0,
+        "due_date": 1630745470,
+        "purchase_amount": 27233,
+        "total_amount": 27233
+      },
+      {
+        "customer_fee": 0,
+        "customer_interest": 0,
+        "due_date": 1633337470,
+        "purchase_amount": 27233,
+        "total_amount": 27233
+      }
+    ],
+    "purchase_amount": 81700
+  },
+  {
+    "customer_total_cost_amount": 1936,
+    "customer_total_cost_bps": 237,
+    "deferred_days": 0,
+    "deferred_months": 0,
+    "eligible": true,
+    "installments_count": 4,
+    "payment_plan": [
+      {
+        "customer_fee": 1936,
+        "customer_interest": 0,
+        "due_date": 1628067070,
+        "purchase_amount": 20425,
+        "total_amount": 22361
+      },
+      {
+        "customer_fee": 0,
+        "customer_interest": 0,
+        "due_date": 1630745470,
+        "purchase_amount": 20425,
+        "total_amount": 20425
+      },
+      {
+        "customer_fee": 0,
+        "customer_interest": 0,
+        "due_date": 1633337470,
+        "purchase_amount": 20425,
+        "total_amount": 20425
+      },
+      {
+        "customer_fee": 0,
+        "customer_interest": 0,
+        "due_date": 1636015870,
+        "purchase_amount": 20425,
+        "total_amount": 20425
+      }
+    ],
+    "purchase_amount": 81700
+  },
+  {
+    "customer_total_cost_amount": 4962,
+    "customer_total_cost_bps": 607,
+    "deferred_days": 0,
+    "deferred_months": 0,
+    "eligible": true,
+    "installments_count": 10,
+    "payment_plan": [
+      {
+        "customer_fee": 0,
+        "customer_interest": 0,
+        "due_date": 1628067071,
+        "purchase_amount": 8668,
+        "total_amount": 8668
+      },
+      {
+        "customer_fee": 0,
+        "customer_interest": 992,
+        "due_date": 1630745471,
+        "purchase_amount": 7674,
+        "total_amount": 8666
+      },
+      {
+        "customer_fee": 0,
+        "customer_interest": 859,
+        "due_date": 1633337471,
+        "purchase_amount": 7807,
+        "total_amount": 8666
+      },
+      {
+        "customer_fee": 0,
+        "customer_interest": 782,
+        "due_date": 1636015871,
+        "purchase_amount": 7884,
+        "total_amount": 8666
+      },
+      {
+        "customer_fee": 0,
+        "customer_interest": 653,
+        "due_date": 1638607871,
+        "purchase_amount": 8013,
+        "total_amount": 8666
+      },
+      {
+        "customer_fee": 0,
+        "customer_interest": 566,
+        "due_date": 1641286271,
+        "purchase_amount": 8100,
+        "total_amount": 8666
+      },
+      {
+        "customer_fee": 0,
+        "customer_interest": 456,
+        "due_date": 1643964671,
+        "purchase_amount": 8210,
+        "total_amount": 8666
+      },
+      {
+        "customer_fee": 0,
+        "customer_interest": 311,
+        "due_date": 1646383871,
+        "purchase_amount": 8355,
+        "total_amount": 8666
+      },
+      {
+        "customer_fee": 0,
+        "customer_interest": 231,
+        "due_date": 1649062271,
+        "purchase_amount": 8435,
+        "total_amount": 8666
+      },
+      {
+        "customer_fee": 0,
+        "customer_interest": 112,
+        "due_date": 1651654271,
+        "purchase_amount": 8554,
+        "total_amount": 8666
+      }
+    ],
+    "purchase_amount": 81700
+  }
+]
