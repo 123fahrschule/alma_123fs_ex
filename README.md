@@ -115,11 +115,12 @@ paid? = status in [:authorized, :captured]
 
 Every function returns one of:
 
-| Result | Meaning |
-|---|---|
-| `{:ok, value}` / `:ok` | Alma answered 2xx with the documented shape |
-| `{:error, %Alma123FS.Error{}}` | rejected: locally (`kind: :validation`), or by Alma (`kind: :api`, 4xx except 408) — or a failed read |
-| `{:unknown, %Alma123FS.Error{}}` | **only for state-changing calls**: no reliable answer (timeout, closed connection, HTTP 5xx or 408, unreadable 2xx). The change may have happened |
+- `{:ok, value}` or `:ok` — Alma answered 2xx with the documented shape.
+- `{:error, %Alma123FS.Error{}}` — rejected locally (`kind: :validation`) or by Alma
+  (`kind: :api`, 4xx except 408), or a read that failed.
+- `{:unknown, %Alma123FS.Error{}}` — **only for state-changing calls**: no reliable answer
+  (timeout, closed connection, HTTP 5xx or 408, unreadable 2xx). The change may have
+  happened.
 
 Invalid options or arguments of the wrong shape (an unknown option key, a non-keyword
 list) are programmer errors and raise `ArgumentError`; the message names the keys but
@@ -263,20 +264,33 @@ client's `src/Plugin`.
 
 Where the sources disagree, this library does not choose silently; the choice is listed.
 
-| Topic | Documentation | PHP client | This library |
-|---|---|---|---|
-| Eligibility endpoint | Two pages: `verifier-leligibilite-dun-achat` (v1, `{"payment": {…}}`) is marked **obsolete**; `verifier-eligibilite-achat` is v2 (`queries`) | `POST /v2/payments/eligibility` | v2 only |
-| Base URL | `https://api.getalma.eu/v1/` (and `/v2/` on the eligibility page) | host only, paths carry `/v1` or `/v2` | host only, versioned paths |
-| Cancel method | `POST /v1/payments/{id}/cancel` | `PUT` | `POST` (confirmed in the sandbox) |
-| `cancelation_reason` | 4 values | adds `declined` | maps all 5 |
-| Eligibility `origin` | `online`, `pos` | `online`, `online_in_page` | string forwarded unchanged |
-| Eligibility response | no `customer_fee`, `customer_interest`, `annual_interest_rate` in the example | `customer_fee`, `annual_interest_rate` required when eligible | all optional (`nil`) |
-| IPN signature | "the webhook is not signed" | `X-Alma-Signature` checked (PrestaShop `ipn.php`, `RequestHelper::isHmacValidated`) | checked; the header is present and valid in the sandbox |
-| IPN method | `GET` with `?pid=` | PrestaShop reads `pid` from GET or POST | GET and POST, `pid` from the query string; the sandbox sent `GET` |
-| `/v1/webhooks` | not in the reference; beta webhooks enabled by e-mail | `WebhookEndpoint` create/fetch/delete; tests use type `ecommerce_report`, response without a secret | implemented as in PHP, returns raw maps |
-| `custom_data` | create schema says `string`, description says JSON object | `array` | must be a map |
-| `cart.items[].picture_url` | required in the create schema | optional in `CartItemDto` | not validated |
-| Payment required fields | list endpoint returns a subset | entity requires ~16 fields | only `id` required |
+- **Eligibility endpoint.** Docs: two pages — `verifier-leligibilite-dun-achat` (v1,
+  `{"payment": {…}}`) is marked obsolete, `verifier-eligibilite-achat` is v2 (`queries`).
+  PHP: `POST /v2/payments/eligibility`. Here: v2 only.
+- **Base URL.** Docs: `https://api.getalma.eu/v1/` (and `/v2/` on the eligibility page).
+  PHP: host only, paths carry `/v1` or `/v2`. Here: host only, versioned paths.
+- **Cancel method.** Docs: `POST /v1/payments/{id}/cancel`. PHP: `PUT`. Here: `POST`,
+  confirmed in the sandbox.
+- **`cancelation_reason`.** Docs: 4 values. PHP: adds `declined`. Here: all 5 mapped.
+- **Eligibility `origin`.** Docs: `online`, `pos`. PHP: `online`, `online_in_page`. Here:
+  the string is forwarded unchanged.
+- **Eligibility response.** Docs: the example has no `customer_fee`, `customer_interest`,
+  `annual_interest_rate`. PHP: `customer_fee` and `annual_interest_rate` are required when
+  eligible. Here: all optional (`nil`).
+- **IPN signature.** Docs: "the webhook is not signed". PHP: `X-Alma-Signature` is checked
+  (PrestaShop `ipn.php`, `RequestHelper::isHmacValidated`). Here: checked; the header is
+  present and valid in the sandbox.
+- **IPN method.** Docs: `GET` with `?pid=`. PHP: PrestaShop reads `pid` from GET or POST.
+  Here: GET and POST, `pid` from the query string; the sandbox sent `GET`.
+- **`/v1/webhooks`.** Docs: not in the reference; beta webhooks are enabled by e-mail.
+  PHP: `WebhookEndpoint` create/fetch/delete, tests use type `ecommerce_report` and a
+  response without a secret. Here: implemented as in PHP, returns raw maps.
+- **`custom_data`.** Docs: the create schema says `string`, the description says JSON
+  object. PHP: `array`. Here: must be a map.
+- **`cart.items[].picture_url`.** Docs: required in the create schema. PHP: optional in
+  `CartItemDto`. Here: not validated.
+- **Payment required fields.** Docs: the list endpoint returns a subset. PHP: the entity
+  requires about 16 fields. Here: only `id` is required.
 
 Documentation-internal ambiguity: the list format page describes `starting_after` as the
 lexicographic **minimum** id while lists are newest first. In the sandbox it behaves as a

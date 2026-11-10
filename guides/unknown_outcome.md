@@ -7,11 +7,11 @@ payment.
 
 `Alma123FS.Payments.create/2` therefore distinguishes three results:
 
-| Result | Payment at Alma |
-|---|---|
-| `{:ok, payment}` | created; `payment.id` is known |
-| `{:error, %Error{kind: :validation}}` / `{:error, %Error{kind: :api}}` (4xx except 408) | not created |
-| `{:unknown, error}` — timeout, closed connection, HTTP 5xx or 408, unreadable 2xx | maybe created |
+- `{:ok, payment}` — created; `payment.id` is known.
+- `{:error, %Error{kind: :validation}}` or `{:error, %Error{kind: :api}}` (4xx except
+  408) — not created.
+- `{:unknown, error}` (timeout, closed connection, HTTP 5xx or 408, unreadable 2xx) —
+  maybe created.
 
 `cancel/2`, `Webhooks.create/3` and `Webhooks.delete/2` use the same `{:unknown, _}`
 result. Read-only calls (`fetch`, `list`, eligibility) return transport failures as
